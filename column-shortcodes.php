@@ -42,6 +42,12 @@ class Codepress_Column_Shortcodes {
 	 */
 	private $version;
 
+    /**
+     * Used to track the start of a new row.
+     * @var boolean
+     */
+    private $is_first_column = true;
+
 	/**
 	 * Constructor
 	 *
@@ -235,10 +241,17 @@ class Codepress_Column_Shortcodes {
 			$name = str_replace( $this->get_prefix(), '', $name );
 		}
 
-		$output = "<div{$id} class='content-column {$name}{$class}'>{$content}</div>";
+        if ($this->is_first_column) {
+            $output = "<div class='content-columns-wrapper'>";
+            $output .= "<div{$id} class='content-column {$name}{$class}'>{$content}</div>";
+            $this->is_first_column = false;
+        } else {
+            $output = "<div{$id} class='content-column {$name}{$class}'>{$content}</div>";
+        }
 
 		if ( false !== $pos ) {
-			$output .= "<div class='clear_column'></div>";
+			$output .= "</div>";
+            $this->is_first_column = true;
 		}
 
 		return $output;

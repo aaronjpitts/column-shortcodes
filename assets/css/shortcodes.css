@@ -1,25 +1,8 @@
 /* =General CSS
 -------------------------------------------------------------- */
-.full_width,
-.one_half,
-.one_third,
-.two_third,
-.one_fourth,
-.three_fourth,
-.one_fifth,
-.two_fifth,
-.three_fifth,
-.four_fifth,
-.one_sixth,
-.five_sixth {
-	float: left;
-}
-.clear_column {
-	clear:both;
-	display:block;
-	font-size:0; height:0;
-	line-height:0; width:100%;
-	overflow: hidden;
+.content-columns-wrapper {
+	display: flex;
+	flex-wrap: wrap;
 }
 
 /* =Shortcodes Templates
@@ -80,10 +63,7 @@
 	.four_fifth,
 	.one_sixth,
 	.five_sixth {
-		clear: both;
 		width: 100%;
-		margin-left: 0;
-		margin-right: 0;
 		margin-bottom: 1em;
 	}
 }
